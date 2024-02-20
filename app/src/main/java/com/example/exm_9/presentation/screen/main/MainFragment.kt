@@ -10,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.exm_9.databinding.BottomSheetBinding
 import com.example.exm_9.databinding.FragmentMainBinding
 import com.example.exm_9.presentation.base.BaseFragment
 import com.example.exm_9.presentation.event.home.ImageEvent
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
 
 
@@ -21,6 +23,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     private var imageLauncher: ActivityResultLauncher<Intent>
 
     private val viewModel: MainViewModel by viewModels()
+
+    private lateinit var bottomSheetDialog: BottomSheetDialog
+
+    private lateinit var bottomSheetBinding: BottomSheetBinding
 
     init {
         imageLauncher =
@@ -33,8 +39,30 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         }
     }
 
+    override fun setUp() {
+        setBottomSheet()
+    }
+
+    private fun setBottomSheet() {
+        bottomSheetBinding = BottomSheetBinding.inflate(layoutInflater)
+
+        bottomSheetDialog = BottomSheetDialog(requireContext()).apply {
+            setContentView(bottomSheetBinding.root)
+        }
+    }
+
     override fun setListeners() {
         binding.btnAddImage.setOnClickListener {
+            bottomSheetDialog.show()
+        }
+
+        setBottomSheetListeners()
+    }
+
+    private fun setBottomSheetListeners() = with(bottomSheetBinding) {
+        ibtnGallery.setOnClickListener {
+            bottomSheetDialog.dismiss()
+
             imageLauncher.launch(
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             )

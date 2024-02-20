@@ -29,7 +29,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Photo"
+        android:text="@string/add_photo"
         app:layout_constraintEnd_toEndOf="@+id/ibtnGallery"
         app:layout_constraintStart_toStartOf="@id/ibtnGallery"
         app:layout_constraintTop_toBottomOf="@+id/ibtnGallery" />
@@ -47,7 +47,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Camera"
+        android:text="@string/camera"
         app:layout_constraintEnd_toEndOf="@+id/ibtnCamera"
         app:layout_constraintStart_toStartOf="@id/ibtnCamera"
         app:layout_constraintTop_toBottomOf="@+id/ibtnCamera" />
@@ -65,7 +65,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Backup"
+        android:text="@string/backup"
         app:layout_constraintEnd_toEndOf="@+id/ibtnUpload"
         app:layout_constraintStart_toStartOf="@id/ibtnUpload"
         app:layout_constraintTop_toBottomOf="@+id/ibtnUpload" />

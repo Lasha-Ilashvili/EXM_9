@@ -1,8 +1,8 @@
 package com.example.exm_9.presentation.state
 
-import android.net.Uri
+import android.graphics.Bitmap
 
 
 data class ImageState(
-    val data: Uri? = null,
+    val data: Bitmap? = null,
 )

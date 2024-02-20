@@ -1,6 +1,6 @@
 package com.example.exm_9.presentation.screen.main
 
-import android.net.Uri
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import com.example.exm_9.presentation.event.home.ImageEvent
 import com.example.exm_9.presentation.state.ImageState
@@ -15,13 +15,13 @@ class MainViewModel : ViewModel() {
 
     fun onEvent(event: ImageEvent) {
         when (event) {
-            is ImageEvent.SetImage -> setImage(event.uri)
+            is ImageEvent.SetImage -> setImage(event.bitmap)
         }
     }
 
-    private fun setImage(uri: Uri?) {
+    private fun setImage(bitmap: Bitmap?) {
         _imageState.update { currentState ->
-            currentState.copy(data = uri)
+            currentState.copy(data = bitmap)
         }
     }
 }
